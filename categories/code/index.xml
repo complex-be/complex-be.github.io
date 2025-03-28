@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code on Nio&#39;s Blog</title>
+    <link>https://complex-be.github.io/categories/code/</link>
+    <description>Recent content in Code on Nio&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 28 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://complex-be.github.io/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编程之道&#43;CPP 001分享</title>
+      <link>https://complex-be.github.io/2024/03/28/code-intro/</link>
+      <pubDate>Thu, 28 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/2024/03/28/code-intro/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;软件就像园艺，而非建筑&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;编程的艺术&#34;&gt;编程的艺术&lt;/h2&gt;&#xA;&lt;p&gt;编程不止于几行代码，编程是一门安身立命的技术，是一种实现心中所想的方法，是一类优雅的艺术。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

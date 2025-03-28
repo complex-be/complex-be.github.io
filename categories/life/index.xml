@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Life on Nio&#39;s Blog</title>
+    <link>https://complex-be.github.io/categories/life/</link>
+    <description>Recent content in Life on Nio&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 28 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://complex-be.github.io/categories/life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你们好呀！</title>
+      <link>https://complex-be.github.io/2024/03/28/life-intro/</link>
+      <pubDate>Thu, 28 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/2024/03/28/life-intro/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;生活不仅仅是工作，更是一种艺术。&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;华园随笔&#34;&gt;华园随笔&lt;/h2&gt;&#xA;&lt;p&gt;趁着思政课无事，我把这几天页面开发的成果大概梳理，部署到GitHub，终于形成了这个博客。从去年十二月就一直想部署一个属于自己的blog，但当时碍于较重的学业压力和思想负担，很难敞开手尝试，所以一直搁置。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

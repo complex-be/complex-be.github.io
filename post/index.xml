@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Nio&#39;s Blog</title>
+    <link>https://complex-be.github.io/post/</link>
+    <description>Recent content in Posts on Nio&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 28 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://complex-be.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你们好呀！</title>
+      <link>https://complex-be.github.io/2024/03/28/life-intro/</link>
+      <pubDate>Thu, 28 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/2024/03/28/life-intro/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;生活不仅仅是工作，更是一种艺术。&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;华园随笔&#34;&gt;华园随笔&lt;/h2&gt;&#xA;&lt;p&gt;趁着思政课无事，我把这几天页面开发的成果大概梳理，部署到GitHub，终于形成了这个博客。从去年十二月就一直想部署一个属于自己的blog，但当时碍于较重的学业压力和思想负担，很难敞开手尝试，所以一直搁置。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>编程之道&#43;CPP 001分享</title>
+      <link>https://complex-be.github.io/2024/03/28/code-intro/</link>
+      <pubDate>Thu, 28 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/2024/03/28/code-intro/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;软件就像园艺，而非建筑&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;编程的艺术&#34;&gt;编程的艺术&lt;/h2&gt;&#xA;&lt;p&gt;编程不止于几行代码，编程是一门安身立命的技术，是一种实现心中所想的方法，是一类优雅的艺术。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nio&#39;s Blog</title>
+    <link>https://complex-be.github.io/</link>
+    <description>Recent content on Nio&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 28 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://complex-be.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你们好呀！</title>
+      <link>https://complex-be.github.io/2024/03/28/life-intro/</link>
+      <pubDate>Thu, 28 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/2024/03/28/life-intro/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;生活不仅仅是工作，更是一种艺术。&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;华园随笔&#34;&gt;华园随笔&lt;/h2&gt;&#xA;&lt;p&gt;趁着思政课无事，我把这几天页面开发的成果大概梳理，部署到GitHub，终于形成了这个博客。从去年十二月就一直想部署一个属于自己的blog，但当时碍于较重的学业压力和思想负担，很难敞开手尝试，所以一直搁置。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>编程之道&#43;CPP 001分享</title>
+      <link>https://complex-be.github.io/2024/03/28/code-intro/</link>
+      <pubDate>Thu, 28 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/2024/03/28/code-intro/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;软件就像园艺，而非建筑&amp;rdquo;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;编程的艺术&#34;&gt;编程的艺术&lt;/h2&gt;&#xA;&lt;p&gt;编程不止于几行代码，编程是一门安身立命的技术，是一种实现心中所想的方法，是一类优雅的艺术。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://complex-be.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/about/</guid>
+      <description>&lt;h2 id=&#34;about-me&#34;&gt;About Me&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Nio&lt;/em&gt;&lt;/strong&gt; is an AI enthusiast and backend developer with a strong passion for Large Language Models (LLMs), embodied intelligence, and mathematics.&lt;/p&gt;&#xA;&lt;p&gt;Currently, he is pursuing his studies at South China University of Technology (2024), focusing on artificial intelligence and its applications.&lt;/p&gt;&#xA;&lt;p&gt;His main research interests include:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Large Language Models and their capabilities&lt;/li&gt;&#xA;&lt;li&gt;Embodied intelligence systems&lt;/li&gt;&#xA;&lt;li&gt;Mathematical foundations of AI&lt;/li&gt;&#xA;&lt;li&gt;Backend development and systems architecture&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Through this blog, Nio aims to share knowledge, insights, and experiences in the fields of AI, technology, and personal growth. He believes in the power of artificial general intelligence (AGI) to transform our world and is dedicated to exploring its possibilities.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://complex-be.github.io/notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/notes/</guid>
+      <description>&lt;h2 id=&#34;go-语言学习笔记&#34;&gt;&lt;a href=&#34;https://zhaohuabing.com/learning-golang&#34;&gt;Go 语言学习笔记&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;envoy-学习笔记&#34;&gt;&lt;a href=&#34;https://zhaohuabing.com/learning-envoy&#34;&gt;Envoy 学习笔记&lt;/a&gt;&lt;/h2&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://complex-be.github.io/search/placeholder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/search/placeholder/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Posts Archive</title>
+      <link>https://complex-be.github.io/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/archive/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
