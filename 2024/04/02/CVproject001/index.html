@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Nio&#39;s Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="img/post-bg-unix-linux.jpg">
+    <meta property="twitter:image" content="img/post-bg-unix-linux.jpg" />
+    
+
+    
+    <meta name="title" content="CVproject001" />
+    <meta property="og:title" content="CVproject001" />
+    <meta property="twitter:title" content="CVproject001" />
+    
+
+    
+    <meta name="description" content="牛浩臣，LLM研究者, 具身智能探索者，数学爱好者，后端开发工程师 | 这里是牛浩臣的博客，与你一起探索AI与技术的无限可能。">
+    <meta property="og:description" content="牛浩臣，LLM研究者, 具身智能探索者，数学爱好者，后端开发工程师 | 这里是牛浩臣的博客，与你一起探索AI与技术的无限可能。" />
+    <meta property="twitter:description" content="牛浩臣，LLM研究者, 具身智能探索者，数学爱好者，后端开发工程师 | 这里是牛浩臣的博客，与你一起探索AI与技术的无限可能。" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="牛浩臣, Nio, LLM, 大语言模型, 具身智能, 人工智能, 数学, 后端开发, 华南理工">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>CVproject001 | 牛浩臣的博客 | Nio&#39;s Blog</title>
+
+    <link rel="canonical" href="/2024/04/02/CVproject001/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Nio&#39;s Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">博客</a>
+                    </li>
+                    
+                    
+                    
+		    
+                        <li><a href="/archive//">ARCHIVE</a></li>
+                    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+                        <li><a href="/categories/math//">MATH</a></li>
+                    
+                        <li><a href="/categories/code//">CODE</a></li>
+                    
+                        <li><a href="/categories/phsicalai//">PHSICALAI</a></li>
+                    
+                        <li><a href="/categories/life//">LIFE</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script> 
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/post-bg-unix-linux.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>CVproject001</h1>
+                    <h2 class="subheading">计算机视觉项目实践</h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                牛浩臣
+                             
+                            on 
+                            Tuesday, April 2, 2024
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <blockquote>
+<p>&ldquo;有想法思路地调包，也不止于调包&mdash;-先做对，再做好&rdquo;</p></blockquote>
+<p>（*注：看之前可以简单的查看一下opencv的API，不过并不重要，我们边做边学）</p>
+<h2 id="基于python的实现">基于python的实现</h2>
+<h3 id="安装">安装</h3>
+<h4 id="conda-and-packages">conda and packages</h4>
+<p>首先我们需要使用conda。conda是啥呢？它是一种虚拟环境，比如我们创建一个conda虚拟环境，就会产生一个playground随意玩耍，不影响其他环境。请百度搜索miniconda进行下载安装，然后在终端运行conda创建我们第一个虚拟环境。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda creat --name OpenCV <span style="color:#8be9fd;font-style:italic">python</span> <span style="color:#ff79c6">=</span> 3.8
+</span></span></code></pre></div><p>然后激活环境，激活完你就可以看到语句开头就有你虚拟环境的名字了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda activate OpenCV
+</span></span></code></pre></div><p>接下来先配置清华镜像源，让我们下载地更快一些。可以自行搜索配置，这里就不配置了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>conda install opencv-python numpy mediapipe pycaw ctypes comtypes
+</span></span></code></pre></div><p>一共这么几个包，opencv是我们用来处理图像的，numpy是常见的数据处理工具，mediapipe为我们提供了手势识别的model，后面仨是控制音量的库</p>
+<p>至此，环境基本配置完成，请在vscode中选择你自己的虚拟环境开始我们的旅途吧~</p>
+<p><em>注：如果期间出现问题，大胆地去问AI，它能解决百分之八九十的问题，如果还有问题，欢迎联系我</em></p>
+<h3 id="实现手势的识别">实现手势的识别</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> cv2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> mediapipe <span style="color:#ff79c6">as</span> mp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time
+</span></span></code></pre></div><p>先导入需要使用的库</p>
+<p>我们先把要干的工作的思路梳理清楚：</p>
+<p>**首先，读取图像。其次，找到手，确定手的位置</p>
+<p>让我们先看看main函数吧：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">main</span>():
+</span></span><span style="display:flex;"><span>    pTime <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>    cTime <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>    cap <span style="color:#ff79c6">=</span> cv2<span style="color:#ff79c6">.</span>VideoCapture(<span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span>    detector <span style="color:#ff79c6">=</span> handDetector()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>        success, img <span style="color:#ff79c6">=</span> cap<span style="color:#ff79c6">.</span>read()
+</span></span><span style="display:flex;"><span>        img <span style="color:#ff79c6">=</span> detector<span style="color:#ff79c6">.</span>findHands(img)
+</span></span><span style="display:flex;"><span>        lmList <span style="color:#ff79c6">=</span> detector<span style="color:#ff79c6">.</span>findPosition(img)
+</span></span><span style="display:flex;"><span>        cTime <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>time()
+</span></span><span style="display:flex;"><span>        fps <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">/</span> (cTime <span style="color:#ff79c6">-</span> pTime)
+</span></span><span style="display:flex;"><span>        pTime <span style="color:#ff79c6">=</span> cTime
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#ff79c6">.</span>putText(img, <span style="color:#8be9fd;font-style:italic">str</span>(<span style="color:#8be9fd;font-style:italic">int</span>(fps)), (<span style="color:#bd93f9">10</span>, <span style="color:#bd93f9">70</span>), cv2<span style="color:#ff79c6">.</span>FONT_HERSHEY_PLAIN, <span style="color:#bd93f9">3</span>, (<span style="color:#bd93f9">255</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">255</span>), <span style="color:#bd93f9">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#ff79c6">.</span>imshow(<span style="color:#f1fa8c">&#34;Image&#34;</span>, img)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> cv2<span style="color:#ff79c6">.</span>waitKey(<span style="color:#bd93f9">1</span>) <span style="color:#ff79c6">&amp;</span> <span style="color:#bd93f9">0xFF</span> <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">ord</span>(<span style="color:#f1fa8c">&#39;q&#39;</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    cap<span style="color:#ff79c6">.</span>release()
+</span></span><span style="display:flex;"><span>    cv2<span style="color:#ff79c6">.</span>destroyAllWindows()
+</span></span></code></pre></div><h4 id="从主函数入手看看我们一步步缺啥methods">从主函数入手，看看我们一步步缺啥methods</h4>
+<p>这是我的一个习惯，先从主函数出发，在一步步逻辑代码推演的过程中看到什么重要，什么需要模块化，需要哪些对象哪些methods。</p>
+<p><strong>我们很自然地想：要读取摄像头里的图像呀？咋读取呢？</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cap <span style="color:#ff79c6">=</span> cv2<span style="color:#ff79c6">.</span>VideoCapture(<span style="color:#bd93f9">0</span>)
+</span></span></code></pre></div><p>就这么读取。</p>
+<p>我们读一段视频，当然要把每一帧都读出来，咋做呢？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>        success, img <span style="color:#ff79c6">=</span> cap<span style="color:#ff79c6">.</span>read()
+</span></span></code></pre></div><ul>
+<li>
+<p><strong><code>success</code></strong>：</p>
+<ul>
+<li>
+<p><code>success</code> 是一个布尔值（<code>True</code> 或 <code>False</code>）。</p>
+</li>
+<li>
+<p>它表示是否成功读取到一帧图像。如果读取成功，<code>success</code> 会是 <code>True</code>，否则是 <code>False</code>。</p>
+</li>
+<li>
+<p>例如，当摄像头没有正常连接或发生其他错误时，<code>success</code> 就会是 <code>False</code>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>img</code></strong>：</p>
+<ul>
+<li>
+<p><code>img</code> 是返回的图像数据，通常是一个 NumPy 数组，表示图像的像素矩阵。</p>
+</li>
+<li>
+<p>这张图像是从摄像头捕捉到的一帧图像。如果读取成功，<code>img</code> 会包含该帧图像的数据（例如，一个 RGB 或 BGR 格式的矩阵）。如果读取失败，<code>img</code> 将为 <code>None</code>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>好了，看来我们既搞定了读取，甚至还返回了一个矩阵用来存储图像！！感恩opencv！！
+（后面复杂的源码分析还在等着你:D）</p>
+<p>**然后，我们希望显示图像的fps,用来帮助我们更好的观察图像。</p>
+<p>至于啥是fps，如果你打游戏可能比较清楚，如果不清楚就百度去吧~</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pTime <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>cTime <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span></code></pre></div><p>在while函数外，我们先声明这两个变量，然后在每次读取新内容的时候在while函数内进行计算fps</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>        success, img <span style="color:#ff79c6">=</span> cap<span style="color:#ff79c6">.</span>read()
+</span></span><span style="display:flex;"><span>       <span style="color:#6272a4"># img = detector.findHands(img)</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#6272a4"># lmList = detector.findPosition(img)</span>
+</span></span><span style="display:flex;"><span>        cTime <span style="color:#ff79c6">=</span> time<span style="color:#ff79c6">.</span>time()
+</span></span><span style="display:flex;"><span>        fps <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span> <span style="color:#ff79c6">/</span> (cTime <span style="color:#ff79c6">-</span> pTime)
+</span></span><span style="display:flex;"><span>        pTime <span style="color:#ff79c6">=</span> cTime
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#ff79c6">.</span>putText(img, <span style="color:#8be9fd;font-style:italic">str</span>(<span style="color:#8be9fd;font-style:italic">int</span>(fps)), (<span style="color:#bd93f9">10</span>, <span style="color:#bd93f9">70</span>), cv2<span style="color:#ff79c6">.</span>FONT_HERSHEY_PLAIN, <span style="color:#bd93f9">3</span>, (<span style="color:#bd93f9">255</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">255</span>), <span style="color:#bd93f9">3</span>)
+</span></span></code></pre></div><p>我们可以清晰地看到公式，然后调用opencv中的putText函数进行put Text，即在图像上写fps的具体值。</p>
+<p><em>注：我们不能期待我们记住每一个函数的参数都有啥，这毫无意义，也费心费力。我们知道putText这个函数就足够了，我们需要在网上搜索关于这个函数的相关参数or直接转到这个函数的母文件中看看它到底是什么，比如这个putText</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>@_typing.overload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">putText</span>(img: cv2<span style="color:#ff79c6">.</span>typing<span style="color:#ff79c6">.</span>MatLike, text: <span style="color:#8be9fd;font-style:italic">str</span>, org: cv2<span style="color:#ff79c6">.</span>typing<span style="color:#ff79c6">.</span>Point, fontFace: <span style="color:#8be9fd;font-style:italic">int</span>, fontScale: <span style="color:#8be9fd;font-style:italic">float</span>, color: cv2<span style="color:#ff79c6">.</span>typing<span style="color:#ff79c6">.</span>Scalar, thickness: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>, lineType: <span style="color:#8be9fd;font-style:italic">int</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>, bottomLeftOrigin: <span style="color:#8be9fd;font-style:italic">bool</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">...</span>) <span style="color:#ff79c6">-&gt;</span> cv2<span style="color:#ff79c6">.</span>typing<span style="color:#ff79c6">.</span>MatLike: <span style="color:#ff79c6">...</span>
+</span></span></code></pre></div><p><em>诺，这就是他的参数了，显而易见</em></p>
+<h4 id="识别手">识别手</h4>
+<p>之后，我们自然想：<strong>好了，现在到识别手势并识别手的位置的时候了，这时候我们就分别写两个methods(这两个methods自然属于一个class，为了清晰，我们先不写这个class)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">findHands</span>(self,img,draw <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">True</span>):
+</span></span><span style="display:flex;"><span>        imgRGB <span style="color:#ff79c6">=</span> cv2<span style="color:#ff79c6">.</span>cvtColor(img, cv2<span style="color:#ff79c6">.</span>COLOR_BGR2RGB)
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>results <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>hands<span style="color:#ff79c6">.</span>process(imgRGB)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">for</span> handLms <span style="color:#ff79c6">in</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> draw:
+</span></span><span style="display:flex;"><span>                    self<span style="color:#ff79c6">.</span>mpDraw<span style="color:#ff79c6">.</span>draw_landmarks(img, handLms, self<span style="color:#ff79c6">.</span>mpHands<span style="color:#ff79c6">.</span>HAND_CONNECTIONS)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> img
+</span></span></code></pre></div><p>让我们看第二行代码，cvt是convert的缩写，意为转化，我们看参数。嗯，img，老朋友，后面那串奇奇怪怪的大写是啥？RGB意味着red，green，blue，我们默认是BGR图片
+这段话可以很好解释作用：</p>
+<ul>
+<li>
+<p><strong>OpenCV</strong> 默认使用 <strong>BGR</strong> 颜色空间，因为它最初是为显示和处理视频流而设计的。它的图像处理函数（如<code>cv2.imread()</code>）会读取图像并将其存储为 <strong>BGR</strong> 格式。</p>
+</li>
+<li>
+<p><strong>MediaPipe</strong> 等其他库（如 TensorFlow）通常期望 <strong>RGB</strong> 格式的图像作为输入。因此，使用 <code>cv2.cvtColor()</code> 将图像从 <strong>BGR</strong> 转换为 <strong>RGB</strong> 是必要的。</p>
+</li>
+</ul>
+<p>self.hands.process(imgRGB)：这是 MediaPipe 库中的方法，用于处理输入图像并检测其中的手部。</p>
+<p>下面这个if表示是否检测到了任何手部<code>if self.results.multi_hand_landmarks:</code></p>
+<p>之后的for循环中，对每一个检测道德手部，都调用mpDraw，在图像 <code>img</code> 上绘制手部的关键点和连接线。</p>
+<p>最后返回img，经过findhands处理，我们就确定了手在哪里。</p>
+<h4 id="之后就是确定手的位置了">之后就是确定手的位置了</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">findPosition</span>(self,img,handNo <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>,draw <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">True</span>):
+</span></span><span style="display:flex;"><span>        lmList <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks:
+</span></span><span style="display:flex;"><span>            myHand <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks[handNo]
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">for</span> <span style="color:#8be9fd;font-style:italic">id</span>,lm <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">enumerate</span>(myHand<span style="color:#ff79c6">.</span>landmark):
+</span></span><span style="display:flex;"><span>                h,w,c <span style="color:#ff79c6">=</span> img<span style="color:#ff79c6">.</span>shape
+</span></span><span style="display:flex;"><span>                cx,cy <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">int</span>(lm<span style="color:#ff79c6">.</span>x<span style="color:#ff79c6">*</span>w), <span style="color:#8be9fd;font-style:italic">int</span>(lm<span style="color:#ff79c6">.</span>y<span style="color:#ff79c6">*</span>h)
+</span></span><span style="display:flex;"><span>                lmList<span style="color:#ff79c6">.</span>append([<span style="color:#8be9fd;font-style:italic">id</span>,cx,cy])
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> draw:
+</span></span><span style="display:flex;"><span>                    cv2<span style="color:#ff79c6">.</span>circle(img, (cx,cy), <span style="color:#bd93f9">15</span>, (<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">255</span>), cv2<span style="color:#ff79c6">.</span>FILLED)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> lmList
+</span></span></code></pre></div><p>我们先声明一个列表，用来存储手的每一个关节在图像上的像素位置</p>
+<p>但是注意，源码中规定，这里的h和w代表的是比例，比如在图片高的0.6，宽的0.4部分。所以为了获取正确的像素点，我们需要×整个图片的像素参数。然后把计算出来的各个关节的位置append到列表中。</p>
+<p>OK，现在我们把这两种方法放到类中，模块化这个寻找手的方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">handDetector</span>():
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> __init__(self,model <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">False</span>,maxHands <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>, detectionCon <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.5</span>, trackCon <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0.5</span>):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>model <span style="color:#ff79c6">=</span> model
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>maxHands <span style="color:#ff79c6">=</span> maxHands
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>detectionCon <span style="color:#ff79c6">=</span> detectionCon
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>trackCon <span style="color:#ff79c6">=</span> trackCon
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>mpHands <span style="color:#ff79c6">=</span> mp<span style="color:#ff79c6">.</span>solutions<span style="color:#ff79c6">.</span>hands
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>hands <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>mpHands<span style="color:#ff79c6">.</span>Hands(
+</span></span><span style="display:flex;"><span>            static_image_mode<span style="color:#ff79c6">=</span>self<span style="color:#ff79c6">.</span>model,
+</span></span><span style="display:flex;"><span>            max_num_hands<span style="color:#ff79c6">=</span>self<span style="color:#ff79c6">.</span>maxHands,
+</span></span><span style="display:flex;"><span>            min_detection_confidence<span style="color:#ff79c6">=</span>self<span style="color:#ff79c6">.</span>detectionCon,
+</span></span><span style="display:flex;"><span>            min_tracking_confidence<span style="color:#ff79c6">=</span>self<span style="color:#ff79c6">.</span>trackCon
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>mpDraw <span style="color:#ff79c6">=</span> mp<span style="color:#ff79c6">.</span>solutions<span style="color:#ff79c6">.</span>drawing_utils
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">findHands</span>(self,img,draw <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">True</span>):
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        imgRGB <span style="color:#ff79c6">=</span> cv2<span style="color:#ff79c6">.</span>cvtColor(img, cv2<span style="color:#ff79c6">.</span>COLOR_BGR2RGB)
+</span></span><span style="display:flex;"><span>        self<span style="color:#ff79c6">.</span>results <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>hands<span style="color:#ff79c6">.</span>process(imgRGB)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks:
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">for</span> handLms <span style="color:#ff79c6">in</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks:
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> draw:
+</span></span><span style="display:flex;"><span>                    self<span style="color:#ff79c6">.</span>mpDraw<span style="color:#ff79c6">.</span>draw_landmarks(img, handLms, self<span style="color:#ff79c6">.</span>mpHands<span style="color:#ff79c6">.</span>HAND_CONNECTIONS)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> img
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">def</span> <span style="color:#50fa7b">findPosition</span>(self,img,handNo <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>,draw <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">True</span>):
+</span></span><span style="display:flex;"><span>        lmList <span style="color:#ff79c6">=</span> []
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks:
+</span></span><span style="display:flex;"><span>            myHand <span style="color:#ff79c6">=</span> self<span style="color:#ff79c6">.</span>results<span style="color:#ff79c6">.</span>multi_hand_landmarks[handNo]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">for</span> <span style="color:#8be9fd;font-style:italic">id</span>,lm <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">enumerate</span>(myHand<span style="color:#ff79c6">.</span>landmark):
+</span></span><span style="display:flex;"><span>                h,w,c <span style="color:#ff79c6">=</span> img<span style="color:#ff79c6">.</span>shape
+</span></span><span style="display:flex;"><span>                cx,cy <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">int</span>(lm<span style="color:#ff79c6">.</span>x<span style="color:#ff79c6">*</span>w), <span style="color:#8be9fd;font-style:italic">int</span>(lm<span style="color:#ff79c6">.</span>y<span style="color:#ff79c6">*</span>h)
+</span></span><span style="display:flex;"><span>                lmList<span style="color:#ff79c6">.</span>append([<span style="color:#8be9fd;font-style:italic">id</span>,cx,cy])
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">if</span> draw:
+</span></span><span style="display:flex;"><span>                    cv2<span style="color:#ff79c6">.</span>circle(img, (cx,cy), <span style="color:#bd93f9">15</span>, (<span style="color:#bd93f9">255</span>,<span style="color:#bd93f9">0</span>,<span style="color:#bd93f9">255</span>), cv2<span style="color:#ff79c6">.</span>FILLED)
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> lmList
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#6272a4">#刚刚我们的def main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><p>至此，我们成功的构建了确定手的位置的Module</p>
+<h3 id="实现音量控制">实现音量控制</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> cv2
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> numpy <span style="color:#ff79c6">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> HandTrackingModule <span style="color:#ff79c6">as</span> htm
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> math
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> ctypes <span style="color:#ff79c6">import</span> cast, POINTER
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> comtypes <span style="color:#ff79c6">import</span> CLSCTX_ALL
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">from</span> pycaw.pycaw <span style="color:#ff79c6">import</span> AudioUtilities, IAudioEndpointVolume
+</span></span></code></pre></div><p>先导入需要使用的库</p>
+<h4 id="思路解析">思路解析</h4>
+<p>我们的思路一定要时刻保持清晰：</p>
+<p>**首先读取，然后识别，然后通过计算食指指尖和大拇指指尖距离的变化，改变声音的大小。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>wCam, hCam <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">640</span>, <span style="color:#bd93f9">480</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cap <span style="color:#ff79c6">=</span> cv2<span style="color:#ff79c6">.</span>VideoCapture(<span style="color:#bd93f9">0</span>)
+</span></span><span style="display:flex;"><span>cap<span style="color:#ff79c6">.</span>set(<span style="color:#bd93f9">3</span>, wCam)
+</span></span><span style="display:flex;"><span>cap<span style="color:#ff79c6">.</span>set(<span style="color:#bd93f9">4</span>, hCam)
+</span></span><span style="display:flex;"><span>pTime <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>detector <span style="color:#ff79c6">=</span> htm<span style="color:#ff79c6">.</span>handDetector(detectionCon<span style="color:#ff79c6">=</span><span style="color:#bd93f9">0.7</span>)
+</span></span></code></pre></div><p>这段代码进行了摄像头内容的读取，因为刚刚详细地解释了，这里不多赘述。</p>
+<p>我们在这里又用了一个set方法设置视频读取窗口的大小，让我们看起来更舒服，可要可不要。</p>
+<p>之后创建一个实例，调用htm（我们刚刚实现的Module）检测手，并调整置信度（我实在不想模型把我的纸抽识别成我的手）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">while</span> <span style="color:#ff79c6">True</span>:
+</span></span><span style="display:flex;"><span>    success, img <span style="color:#ff79c6">=</span> cap<span style="color:#ff79c6">.</span>read()
+</span></span><span style="display:flex;"><span>    img <span style="color:#ff79c6">=</span> detector<span style="color:#ff79c6">.</span>findHands(img)
+</span></span><span style="display:flex;"><span>    lmList <span style="color:#ff79c6">=</span> detector<span style="color:#ff79c6">.</span>findPosition(img,draw <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">False</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> <span style="color:#8be9fd;font-style:italic">len</span>(lmList) <span style="color:#ff79c6">!=</span> <span style="color:#bd93f9">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(lmList[<span style="color:#bd93f9">4</span>],lmList[<span style="color:#bd93f9">8</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        x1, y1 <span style="color:#ff79c6">=</span> lmList[<span style="color:#bd93f9">4</span>][<span style="color:#bd93f9">1</span>], lmList[<span style="color:#bd93f9">4</span>][<span style="color:#bd93f9">2</span>]
+</span></span><span style="display:flex;"><span>        x2, y2 <span style="color:#ff79c6">=</span> lmList[<span style="color:#bd93f9">8</span>][<span style="color:#bd93f9">1</span>], lmList[<span style="color:#bd93f9">8</span>][<span style="color:#bd93f9">2</span>]
+</span></span><span style="display:flex;"><span>        cx, cy <span style="color:#ff79c6">=</span> (x1 <span style="color:#ff79c6">+</span> x2) <span style="color:#ff79c6">//</span> <span style="color:#bd93f9">2</span>, (y1 <span style="color:#ff79c6">+</span> y2) <span style="color:#ff79c6">//</span> <span style="color:#bd93f9">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#34;&#34;&#34; cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">        cv2.circle(img, (x2, y2), 15, (255, 0, 255), cv2.FILLED)
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">        cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED) &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        length <span style="color:#ff79c6">=</span> math<span style="color:#ff79c6">.</span>hypot(x2 <span style="color:#ff79c6">-</span> x1, y2 <span style="color:#ff79c6">-</span> y1)
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd;font-style:italic">print</span>(length)
+</span></span></code></pre></div><p>这里的逻辑和上一个Module部分代码相差不多，不过可以注意，我们特意选择了两个坐标，一个是食指指尖的，一个是大拇指指尖的。</p>
+<p><em>注：可以在mediapipe中找到相应的对应图</em></p>
+<p>然后我们调用math中的方法计算两根手指之间的距离</p>
+<p><strong>好啦，到这里，基本的逻辑已经实现，我们接下来就要解决一个问题：通过距离的变化调整音量的大小</strong></p>
+<p>我们在while循环外先初始化一些代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>devices <span style="color:#ff79c6">=</span> AudioUtilities<span style="color:#ff79c6">.</span>GetSpeakers()
+</span></span><span style="display:flex;"><span>interface <span style="color:#ff79c6">=</span> devices<span style="color:#ff79c6">.</span>Activate(IAudioEndpointVolume<span style="color:#ff79c6">.</span>_iid_, CLSCTX_ALL, <span style="color:#ff79c6">None</span>)
+</span></span><span style="display:flex;"><span>volume <span style="color:#ff79c6">=</span> cast(interface, POINTER(IAudioEndpointVolume))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>volMin, volMax, volStep <span style="color:#ff79c6">=</span> volume<span style="color:#ff79c6">.</span>GetVolumeRange()
+</span></span><span style="display:flex;"><span>vol <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span><span style="display:flex;"><span>volBar <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">400</span>
+</span></span><span style="display:flex;"><span>volPer <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+</span></span></code></pre></div><p><code>AudioUtilities.GetSpeakers()</code>：这行代码获取计算机上的扬声器设备（默认音频输出设备）。它返回一个设备对象，代表音频输出设备。<code>AudioUtilities</code> 是 <code>pycaw</code> 库中的一个模块，<code>GetSpeakers()</code> 是它的方法，用来获取计算机的扬声器设备。</p>
+<ul>
+<li>
+<p><code>devices.Activate()</code>：这行代码用于激活音频设备的 <code>IAudioEndpointVolume</code> 接口。<code>IAudioEndpointVolume</code> 是一个 COM 接口，允许控制音频输出设备的音量。</p>
+<ul>
+<li>
+<p><code>IAudioEndpointVolume._iid_</code>：这是 <code>IAudioEndpointVolume</code> 接口的标识符（接口ID），用于指定要激活的接口类型。</p>
+</li>
+<li>
+<p><code>CLSCTX_ALL</code>：指定类上下文，<code>CLSCTX_ALL</code> 表示使用所有类上下文。</p>
+</li>
+<li>
+<p><code>None</code>：这里的 <code>None</code> 表示没有其他参数。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>cast(interface, POINTER(IAudioEndpointVolume))</code>：这行代码将 <code>interface</code> 转换为 <code>IAudioEndpointVolume</code> 接口的指针。<code>cast()</code> 是一个 <code>ctypes</code> 库中的方法，用于将对象转换为其他类型的指针。<code>POINTER(IAudioEndpointVolume)</code> 表示将 <code>interface</code> 转换为指向 <code>IAudioEndpointVolume</code> 接口的指针。通过这个指针，之后可以调用接口方法来获取或设置音量</p>
+<ul>
+<li>
+<p><code>volume.GetVolumeRange()</code>：这个方法返回音量的最小值、最大值和步长（增量）。具体来说：</p>
+<ul>
+<li>
+<p><code>volMin</code>：音量的最小值。</p>
+</li>
+<li>
+<p><code>volMax</code>：音量的最大值。</p>
+</li>
+<li>
+<p><code>volStep</code>：音量的变化步长（每次调整时，音量的增量）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>这行代码将音量范围信息存储在 <code>volMin</code>、<code>volMax</code> 和 <code>volStep</code> 变量中。</p>
+</li>
+</ul>
+<p>是不是看花了眼？没关系，这不重要，有兴趣的读者可以看后面我们是怎么一步步实现这个Module的功能的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   vol <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>interp(length, [<span style="color:#bd93f9">50</span>, <span style="color:#bd93f9">300</span>], [volMin, volMax])
+</span></span><span style="display:flex;"><span>   volBar <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>interp(length, [<span style="color:#bd93f9">50</span>, <span style="color:#bd93f9">300</span>], [<span style="color:#bd93f9">400</span>, <span style="color:#bd93f9">150</span>])
+</span></span><span style="display:flex;"><span>   volPer <span style="color:#ff79c6">=</span> np<span style="color:#ff79c6">.</span>interp(length, [<span style="color:#bd93f9">50</span>, <span style="color:#bd93f9">300</span>], [<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">100</span>])
+</span></span><span style="display:flex;"><span>   volume<span style="color:#ff79c6">.</span>SetMasterVolumeLevel(vol, <span style="color:#ff79c6">None</span>)
+</span></span></code></pre></div><p>在while循环中，我们加入这段代码。</p>
+<p>先介绍一下numpy的这个interp函数：</p>
+<p><code>np.interp()</code> 是 NumPy 库中的插值函数，用于将一个值映射到指定的范围</p>
+<p>意味着我们把起始值为50~300的length映射到volMin和volMax中，后面也一样，一个映射到音量条的高度范围，一个映射到宽度范围</p>
+<p>最后通过第四行调整音量的大小。</p>
+<p>至此，所有逻辑已经写完，恭喜你！！</p>
+<h2 id="库源码分析">库源码分析</h2>
+<h3 id="mediapipe">Mediapipe</h3>
+<h4 id="库的基本介绍">库的基本介绍</h4>
+<p>我们调包了半天，现在讲讲啥是Mediapipe：</p>
+<p>MediaPipe 的源码通常包含以下几个主要部分：</p>
+<p><strong>Graph，Calculator，framework，media_pipe_framework</strong></p>
+<ul>
+<li>Calculator 是 MediaPipe 中的核心概念，几乎所有的操作都由 Calculator 完成。每个 Calculator 负责某种特定的任务，可能是图像转换、数据分析或者模型推理等</li>
+<li>Graph 是 MediaPipe 中数据流的表示。在 MediaPipe 中，图的节点通常是 Calculator，数据在图中流动并被处理。Graph 是构建复杂处理管道的基础，它管理节点之间的数据流和任务调度。</li>
+<li>MediaPipe Framework 是整个架构的底层支持，处理图的执行、同步、线程管理等。它提供了数据流的管道控制和计算调度机制。</li>
+</ul>
+<p>是不是太复杂了一点？我们可以这样直观的理解：</p>
+<p>比如我们要经营一家水果工厂：</p>
+<table>
+  <thead>
+      <tr>
+          <th>MediaPipe 概念</th>
+          <th>比喻中的角色</th>
+          <th>作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Graph</strong></td>
+          <td>整条流水线的蓝图</td>
+          <td>决定了处理流程和顺序：水果怎么处理，加工步骤是什么</td>
+      </tr>
+      <tr>
+          <td><strong>Calculator</strong></td>
+          <td>具体的处理机器/工人</td>
+          <td>每一步具体处理操作，比如洗水果、榨汁、过滤</td>
+      </tr>
+      <tr>
+          <td><strong>Packet</strong></td>
+          <td>传送带上的篮子</td>
+          <td>装着数据（水果、果汁）的容器，在处理站之间流转</td>
+      </tr>
+      <tr>
+          <td><strong>Stream</strong></td>
+          <td>输送带通道</td>
+          <td>连接各个处理步骤的数据流通道</td>
+      </tr>
+      <tr>
+          <td><strong>Framework</strong></td>
+          <td>整个工厂的管理系统（调度器）</td>
+          <td>管理流程、时间、线程、错误处理等</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="hand-tracking模块介绍">Hand Tracking模块介绍</h4>
+<h5 id="graph">Graph</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># Graph definition for hand tracking
+</span></span><span style="display:flex;"><span>input_stream: &#34;input_video&#34;
+</span></span><span style="display:flex;"><span>output_stream: &#34;output_landmarks&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>node {
+</span></span><span style="display:flex;"><span>  calculator: &#34;HandDetectionCpu&#34;
+</span></span><span style="display:flex;"><span>  input_stream: &#34;input_video&#34;
+</span></span><span style="display:flex;"><span>  output_stream: &#34;detected_hands&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>node {
+</span></span><span style="display:flex;"><span>  calculator: &#34;HandLandmarkCpu&#34;
+</span></span><span style="display:flex;"><span>  input_stream: &#34;detected_hands&#34;
+</span></span><span style="display:flex;"><span>  output_stream: &#34;hand_landmarks&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>node {
+</span></span><span style="display:flex;"><span>  calculator: &#34;HandGestureRecognition&#34;
+</span></span><span style="display:flex;"><span>  input_stream: &#34;hand_landmarks&#34;
+</span></span><span style="display:flex;"><span>  output_stream: &#34;recognized_gesture&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>构造了一个非结构化的数据：设置了这么几个关键的点：</p>
+<ul>
+<li>
+<p><strong>HandDetectionCpu</strong>：负责检测视频中的手部，输出手部区域。</p>
+</li>
+<li>
+<p><strong>HandLandmarkCpu</strong>：对检测到的手部区域进行关键点定位，输出每只手的21个关节点的坐标。</p>
+</li>
+<li>
+<p><strong>HandGestureRecognition</strong>：基于关键点坐标，进行手势分类。</p>
+</li>
+</ul>
+<h5 id="handdetection模块">HandDetection模块</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">HandDetectionCalculator</span> <span style="color:#ff79c6">:</span> <span style="color:#ff79c6">public</span> CalculatorBase {
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">public</span><span style="color:#ff79c6">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 处理输入的视频帧
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    absl<span style="color:#ff79c6">::</span>Status Process(CalculatorContext<span style="color:#ff79c6">*</span> context) <span style="color:#ff79c6">override</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 获取输入的视频帧数据
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">const</span> <span style="color:#ff79c6">auto</span><span style="color:#ff79c6">&amp;</span> input_frame <span style="color:#ff79c6">=</span> context<span style="color:#ff79c6">-&gt;</span>Inputs().Tag(<span style="color:#f1fa8c">&#34;input_video&#34;</span>).Get<span style="color:#ff79c6">&lt;</span>NormalizedImageFrame<span style="color:#ff79c6">&gt;</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 使用预训练模型进行手部检测
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        std<span style="color:#ff79c6">::</span>vector<span style="color:#ff79c6">&lt;</span>HandDetection<span style="color:#ff79c6">&gt;</span> hands <span style="color:#ff79c6">=</span> DetectHands(input_frame);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 输出检测结果
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        context<span style="color:#ff79c6">-&gt;</span>Outputs().Tag(<span style="color:#f1fa8c">&#34;detected_hands&#34;</span>).AddPacket(
+</span></span><span style="display:flex;"><span>            MakePacket<span style="color:#ff79c6">&lt;</span>std<span style="color:#ff79c6">::</span>vector<span style="color:#ff79c6">&lt;</span>HandDetection<span style="color:#ff79c6">&gt;&gt;</span>(hands).At(context<span style="color:#ff79c6">-&gt;</span>InputTimestamp()));
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> absl<span style="color:#ff79c6">::</span>OkStatus();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>我们其实通过注释就可以理解这个模块在干啥。如果总结为三步的话，就是：</p>
+<ul>
+<li>
+<p>该模块的 <code>Process</code> 方法首先从输入流中读取图像帧（即 <code>input_video</code>），然后将图像传递给手部检测模型。</p>
+</li>
+<li>
+<p>模型返回手部检测结果（<code>HandDetection</code>），包括手部的位置和可能的置信度。</p>
+</li>
+<li>
+<p>最后，结果通过 <code>context-&gt;Outputs()</code> 发送到下一个节点。、</p>
+</li>
+</ul>
+<p><strong>我们能从中学到什么？？</strong></p>
+<p>我觉得，对我帮助最大的是，<strong>类型安全和智能指针</strong>。absl::Status 类型用于返回操作结果，它使得错误处理更加明确，避免了使用传统的错误代码或异常机制。<strong>Status 对象可以提供更多的错误信息（如错误消息和状态代码），使得异常情况更加易于追踪。</strong></p>
+<h5 id="handlandmark模块">HandLandmark模块</h5>
+<p>这个模块用来确定位置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">HandLandmarkCalculator</span> <span style="color:#ff79c6">:</span> <span style="color:#ff79c6">public</span> CalculatorBase {
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">public</span><span style="color:#ff79c6">:</span>
+</span></span><span style="display:flex;"><span>    absl<span style="color:#ff79c6">::</span>Status Process(CalculatorContext<span style="color:#ff79c6">*</span> context) <span style="color:#ff79c6">override</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 获取检测到的手部区域
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">const</span> <span style="color:#ff79c6">auto</span><span style="color:#ff79c6">&amp;</span> hand_detections <span style="color:#ff79c6">=</span> context<span style="color:#ff79c6">-&gt;</span>Inputs().Tag(<span style="color:#f1fa8c">&#34;detected_hands&#34;</span>).Get<span style="color:#ff79c6">&lt;</span>std<span style="color:#ff79c6">::</span>vector<span style="color:#ff79c6">&lt;</span>HandDetection<span style="color:#ff79c6">&gt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 对每个手部区域进行关键点定位
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        std<span style="color:#ff79c6">::</span>vector<span style="color:#ff79c6">&lt;</span>HandLandmarks<span style="color:#ff79c6">&gt;</span> landmarks <span style="color:#ff79c6">=</span> DetectLandmarks(hand_detections);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 输出关键点结果
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        context<span style="color:#ff79c6">-&gt;</span>Outputs().Tag(<span style="color:#f1fa8c">&#34;hand_landmarks&#34;</span>).AddPacket(
+</span></span><span style="display:flex;"><span>            MakePacket<span style="color:#ff79c6">&lt;</span>std<span style="color:#ff79c6">::</span>vector<span style="color:#ff79c6">&lt;</span>HandLandmarks<span style="color:#ff79c6">&gt;&gt;</span>(landmarks).At(context<span style="color:#ff79c6">-&gt;</span>InputTimestamp()));
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> absl<span style="color:#ff79c6">::</span>OkStatus();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>先看第一个语句，使用引用 (<code>&amp;</code>) 而非复制数据，可以避免不必要的数据拷贝，提高性能，特别是在处理大型数据结构（如 <code>std::vector</code>）时。（我知道这一点很常见，但是我们总是以为“本来就应该这样呀！！其实不然！！！理解为啥能帮助我们更好的写代码。”）</p>
+<p>这三个模块通过不同的计算器进行串联，并使用数据包（Packet）进行数据传递。每个模块都有专门的算法实现，确保手势识别能够实时且准确地执行。</p>
+<h3 id="为啥这些代码能在python中运行">为啥这些代码能在python中运行？</h3>
+<p>像 <strong>MediaPipe</strong> 这样的库通常提供了 C++ 库和 Python API 的绑定。<strong>MediaPipe 本身是使用 C++ 开发的，但它通过绑定将 C++ 实现暴露为 Python 模块，使得 Python 开发者可以调用 C++ 实现的高效算法。</strong></p>
+<p>这种方式通常会将 C++ 的核心计算逻辑和处理流程封装在 Python 可调用的函数或类中。例如，MediaPipe 的图计算 (<code>Graph</code>) 和计算器 (<code>Calculator</code>) 就是通过 Python API 进行访问的。</p>
+<h2 id="基于c的实现">基于C++的实现</h2>
+<h3 id="安装-1">安装</h3>
+<p>建议使用VScode，毕竟大部分场景下还是要在Linux基于CMakeLists开发的。不过这个项目太简单啦</p>
+<p><strong>（未完待续捏~）</strong></p>
+
+
+                
+                <div class="entry-shang text-center">
+    
+	    <p>「真诚赞赏，手留余香」</p>
+	
+	<button class="zs show-zs btn btn-bred">赞赏支持</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+		<span class="author"><a href="https://complex-be.github.io/"><img src="/img/favicon.png" />Nio&#39;s Blog</a></span>
+        
+	        <p class="tip"><i></i><span>真诚赞赏，手留余香</span></p>
+		
+ 
+	</div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">2元</button>
+			<button class="btn btn-blink" data-num="5">5元</button>
+			<button class="btn btn-blink" data-num="10">10元</button>
+			<button class="btn btn-blink" data-num="50">50元</button>
+			<button class="btn btn-blink" data-num="100">100元</button>
+			<button class="btn btn-blink" data-num="1">任意金额</button>
+		</div>
+		<div class="zs-modal-pay">
+			<button class="btn btn-bred" id="pay-text">2元</button>
+			<p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+			<img src="/img/wechat.jpg"  id="pay-image"/>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span ><span class="zs-wechat"><img src="/img/reward/wechat-btn.png"/></span></label>
+		<label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img src="/img/reward/alipay-btn.png"/></span></label>
+	</div>
+</div>
+<script type="text/javascript" src="/js/reward.js"></script> 
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2024/03/28/life-intro/" data-toggle="tooltip" data-placement="top" title="你们好呀！">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+
+                
+
+
+
+
+<link href="https://xxx.xxx.com/dist/Artalk.css" rel="stylesheet" />
+<script src="https://xxx.xxx.com/dist/Artalk.js"></script>
+
+
+<div id="Comments"></div>
+
+<script>
+    Artalk.init({
+        el: '#Comments',
+        pageKey: 'https:\/\/complex-be.github.io\/2024\/04\/02\/CVproject001\/',
+        pageTitle: 'CVproject001',
+        server: 'https:\/\/xxx.xxx.com',
+        site: 'xxx blog',
+    })
+</script>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://openai.com/blog">OpenAI 博客</a></li>
+                        
+                        <li><a target="_blank" href="https://deepmind.google/discover/blog/">DeepMind 博客</a></li>
+                        
+                        <li><a target="_blank" href="https://www.jiqizhixin.com/">机器之心</a></li>
+                        
+                        <li><a target="_blank" href="https://www.scholat.com/aicomm.html">人工智能社区</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="mailto:2534041965@qq.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/img/wechat_qrcode.jpg">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/complex-be">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a href='' rel="alternate" type="application/rss+xml" title="Nio&#39;s Blog" >
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Nio&#39;s Blog 2025
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+        _containerSelector = 'div.post-container'
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow" title="' + t + '">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+ 
+</body>
+</html>

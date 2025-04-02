@@ -6,8 +6,22 @@
     <description>Recent content in Categories on Nio&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Apr 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://complex-be.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CV</title>
+      <link>https://complex-be.github.io/categories/cv/</link>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/categories/cv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Project</title>
+      <link>https://complex-be.github.io/categories/project/</link>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>https://complex-be.github.io/categories/project/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Code</title>
       <link>https://complex-be.github.io/categories/code/</link>

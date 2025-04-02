@@ -1,0 +1,529 @@
+---
+layout:     post
+title:      "CVproject001"
+subtitle:   "计算机视觉项目实践"
+date:       2024-04-02
+author:     "牛浩臣"
+URL:        "/2024/04/02/CVproject001/"
+image:      "img/post-bg-unix-linux.jpg"
+categories: ["CV", "project"]
+---
+
+> "有想法思路地调包，也不止于调包----先做对，再做好"
+
+（*注：看之前可以简单的查看一下opencv的API，不过并不重要，我们边做边学）
+
+## 基于python的实现
+
+### 安装
+
+#### conda and packages
+
+首先我们需要使用conda。conda是啥呢？它是一种虚拟环境，比如我们创建一个conda虚拟环境，就会产生一个playground随意玩耍，不影响其他环境。请百度搜索miniconda进行下载安装，然后在终端运行conda创建我们第一个虚拟环境。
+
+```bash
+conda creat --name OpenCV python = 3.8
+```
+
+ 然后激活环境，激活完你就可以看到语句开头就有你虚拟环境的名字了
+
+```bash
+conda activate OpenCV
+```
+
+接下来先配置清华镜像源，让我们下载地更快一些。可以自行搜索配置，这里就不配置了
+
+```bash
+conda install opencv-python numpy mediapipe pycaw ctypes comtypes
+```
+
+一共这么几个包，opencv是我们用来处理图像的，numpy是常见的数据处理工具，mediapipe为我们提供了手势识别的model，后面仨是控制音量的库
+
+至此，环境基本配置完成，请在vscode中选择你自己的虚拟环境开始我们的旅途吧~
+
+*注：如果期间出现问题，大胆地去问AI，它能解决百分之八九十的问题，如果还有问题，欢迎联系我*
+
+### 实现手势的识别
+
+```python
+import cv2
+
+import mediapipe as mp
+
+import time
+```
+先导入需要使用的库
+
+我们先把要干的工作的思路梳理清楚：
+
+**首先，读取图像。其次，找到手，确定手的位置
+
+让我们先看看main函数吧：
+```python
+def main():
+    pTime = 0
+    cTime = 0
+    cap = cv2.VideoCapture(0)
+    detector = handDetector()
+
+    while True:
+        success, img = cap.read()
+        img = detector.findHands(img)
+        lmList = detector.findPosition(img)
+        cTime = time.time()
+        fps = 1 / (cTime - pTime)
+        pTime = cTime
+        cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)
+
+        cv2.imshow("Image", img)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+```
+
+#### 从主函数入手，看看我们一步步缺啥methods
+
+这是我的一个习惯，先从主函数出发，在一步步逻辑代码推演的过程中看到什么重要，什么需要模块化，需要哪些对象哪些methods。
+
+**我们很自然地想：要读取摄像头里的图像呀？咋读取呢？**
+
+```python
+cap = cv2.VideoCapture(0)
+```
+
+就这么读取。
+
+我们读一段视频，当然要把每一帧都读出来，咋做呢？
+
+```python
+while True:
+        success, img = cap.read()
+```
+- **`success`**：
+    
+    - `success` 是一个布尔值（`True` 或 `False`）。
+        
+    - 它表示是否成功读取到一帧图像。如果读取成功，`success` 会是 `True`，否则是 `False`。
+        
+    - 例如，当摄像头没有正常连接或发生其他错误时，`success` 就会是 `False`。
+        
+- **`img`**：
+    
+    - `img` 是返回的图像数据，通常是一个 NumPy 数组，表示图像的像素矩阵。
+        
+    - 这张图像是从摄像头捕捉到的一帧图像。如果读取成功，`img` 会包含该帧图像的数据（例如，一个 RGB 或 BGR 格式的矩阵）。如果读取失败，`img` 将为 `None`。
+
+
+好了，看来我们既搞定了读取，甚至还返回了一个矩阵用来存储图像！！感恩opencv！！
+（后面复杂的源码分析还在等着你:D）
+
+**然后，我们希望显示图像的fps,用来帮助我们更好的观察图像。
+
+至于啥是fps，如果你打游戏可能比较清楚，如果不清楚就百度去吧~
+
+```python
+pTime = 0
+cTime = 0
+```
+
+在while函数外，我们先声明这两个变量，然后在每次读取新内容的时候在while函数内进行计算fps
+
+```python
+while True:
+        success, img = cap.read()
+       # img = detector.findHands(img)
+       # lmList = detector.findPosition(img)
+        cTime = time.time()
+        fps = 1 / (cTime - pTime)
+        pTime = cTime
+        cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)
+```
+
+我们可以清晰地看到公式，然后调用opencv中的putText函数进行put Text，即在图像上写fps的具体值。
+
+*注：我们不能期待我们记住每一个函数的参数都有啥，这毫无意义，也费心费力。我们知道putText这个函数就足够了，我们需要在网上搜索关于这个函数的相关参数or直接转到这个函数的母文件中看看它到底是什么，比如这个putText*
+
+```python
+@_typing.overload
+
+def putText(img: cv2.typing.MatLike, text: str, org: cv2.typing.Point, fontFace: int, fontScale: float, color: cv2.typing.Scalar, thickness: int = ..., lineType: int = ..., bottomLeftOrigin: bool = ...) -> cv2.typing.MatLike: ...
+```
+
+*诺，这就是他的参数了，显而易见*
+
+
+#### 识别手
+
+之后，我们自然想：**好了，现在到识别手势并识别手的位置的时候了，这时候我们就分别写两个methods(这两个methods自然属于一个class，为了清晰，我们先不写这个class)**
+
+```python
+def findHands(self,img,draw = True):
+        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        self.results = self.hands.process(imgRGB)
+        if self.results.multi_hand_landmarks:
+            for handLms in self.results.multi_hand_landmarks:
+                if draw:
+                    self.mpDraw.draw_landmarks(img, handLms, self.mpHands.HAND_CONNECTIONS)
+
+        return img
+```
+
+让我们看第二行代码，cvt是convert的缩写，意为转化，我们看参数。嗯，img，老朋友，后面那串奇奇怪怪的大写是啥？RGB意味着red，green，blue，我们默认是BGR图片
+这段话可以很好解释作用：
+
+- **OpenCV** 默认使用 **BGR** 颜色空间，因为它最初是为显示和处理视频流而设计的。它的图像处理函数（如`cv2.imread()`）会读取图像并将其存储为 **BGR** 格式。
+    
+- **MediaPipe** 等其他库（如 TensorFlow）通常期望 **RGB** 格式的图像作为输入。因此，使用 `cv2.cvtColor()` 将图像从 **BGR** 转换为 **RGB** 是必要的。
+
+self.hands.process(imgRGB)：这是 MediaPipe 库中的方法，用于处理输入图像并检测其中的手部。
+
+下面这个if表示是否检测到了任何手部`if self.results.multi_hand_landmarks:`
+
+之后的for循环中，对每一个检测道德手部，都调用mpDraw，在图像 `img` 上绘制手部的关键点和连接线。
+
+最后返回img，经过findhands处理，我们就确定了手在哪里。
+
+#### 之后就是确定手的位置了
+
+```python
+def findPosition(self,img,handNo = 0,draw = True):
+        lmList = []
+        if self.results.multi_hand_landmarks:
+            myHand = self.results.multi_hand_landmarks[handNo]
+            for id,lm in enumerate(myHand.landmark):
+                h,w,c = img.shape
+                cx,cy = int(lm.x*w), int(lm.y*h)
+                lmList.append([id,cx,cy])
+                if draw:
+                    cv2.circle(img, (cx,cy), 15, (255,0,255), cv2.FILLED)
+
+        return lmList
+```
+
+我们先声明一个列表，用来存储手的每一个关节在图像上的像素位置
+
+但是注意，源码中规定，这里的h和w代表的是比例，比如在图片高的0.6，宽的0.4部分。所以为了获取正确的像素点，我们需要×整个图片的像素参数。然后把计算出来的各个关节的位置append到列表中。
+
+
+OK，现在我们把这两种方法放到类中，模块化这个寻找手的方法。
+
+```python
+class handDetector():
+
+    def __init__(self,model = False,maxHands = 2, detectionCon = 0.5, trackCon = 0.5):
+
+        self.model = model
+        self.maxHands = maxHands
+        self.detectionCon = detectionCon
+        self.trackCon = trackCon
+        self.mpHands = mp.solutions.hands
+        
+        self.hands = self.mpHands.Hands(
+            static_image_mode=self.model,
+            max_num_hands=self.maxHands,
+            min_detection_confidence=self.detectionCon,
+            min_tracking_confidence=self.trackCon
+        )
+
+        self.mpDraw = mp.solutions.drawing_utils
+
+    def findHands(self,img,draw = True):
+    
+        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        self.results = self.hands.process(imgRGB)
+
+        if self.results.multi_hand_landmarks:
+            for handLms in self.results.multi_hand_landmarks:
+                if draw:
+                    self.mpDraw.draw_landmarks(img, handLms, self.mpHands.HAND_CONNECTIONS)
+        return img
+
+  
+    def findPosition(self,img,handNo = 0,draw = True):
+        lmList = []
+  
+
+        if self.results.multi_hand_landmarks:
+            myHand = self.results.multi_hand_landmarks[handNo]
+
+            for id,lm in enumerate(myHand.landmark):
+                h,w,c = img.shape
+                cx,cy = int(lm.x*w), int(lm.y*h)
+                lmList.append([id,cx,cy])
+                if draw:
+                    cv2.circle(img, (cx,cy), 15, (255,0,255), cv2.FILLED)
+        return lmList
+```
+
+
+```python
+#刚刚我们的def main
+
+if __name__ == "__main__":
+    main()
+```
+
+至此，我们成功的构建了确定手的位置的Module
+
+
+### 实现音量控制
+
+```python
+import cv2
+import time
+import numpy as np
+import HandTrackingModule as htm
+import math
+from ctypes import cast, POINTER
+from comtypes import CLSCTX_ALL
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+```
+先导入需要使用的库
+
+#### 思路解析
+
+我们的思路一定要时刻保持清晰：
+
+**首先读取，然后识别，然后通过计算食指指尖和大拇指指尖距离的变化，改变声音的大小。
+
+```python
+wCam, hCam = 640, 480
+
+cap = cv2.VideoCapture(0)
+cap.set(3, wCam)
+cap.set(4, hCam)
+pTime = 0
+detector = htm.handDetector(detectionCon=0.7)
+```
+
+这段代码进行了摄像头内容的读取，因为刚刚详细地解释了，这里不多赘述。
+
+我们在这里又用了一个set方法设置视频读取窗口的大小，让我们看起来更舒服，可要可不要。
+
+之后创建一个实例，调用htm（我们刚刚实现的Module）检测手，并调整置信度（我实在不想模型把我的纸抽识别成我的手）
+
+```python
+while True:
+    success, img = cap.read()
+    img = detector.findHands(img)
+    lmList = detector.findPosition(img,draw = False)
+    if len(lmList) != 0:
+        print(lmList[4],lmList[8])
+
+        x1, y1 = lmList[4][1], lmList[4][2]
+        x2, y2 = lmList[8][1], lmList[8][2]
+        cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
+        """ cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
+        cv2.circle(img, (x2, y2), 15, (255, 0, 255), cv2.FILLED)
+        cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED) """
+        length = math.hypot(x2 - x1, y2 - y1)
+        print(length)
+```
+
+这里的逻辑和上一个Module部分代码相差不多，不过可以注意，我们特意选择了两个坐标，一个是食指指尖的，一个是大拇指指尖的。
+
+*注：可以在mediapipe中找到相应的对应图*
+
+然后我们调用math中的方法计算两根手指之间的距离
+
+**好啦，到这里，基本的逻辑已经实现，我们接下来就要解决一个问题：通过距离的变化调整音量的大小**
+
+我们在while循环外先初始化一些代码：
+
+```python
+devices = AudioUtilities.GetSpeakers()
+interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+volume = cast(interface, POINTER(IAudioEndpointVolume))
+
+volMin, volMax, volStep = volume.GetVolumeRange()
+vol = 0
+volBar = 400
+volPer = 0
+```
+
+`AudioUtilities.GetSpeakers()`：这行代码获取计算机上的扬声器设备（默认音频输出设备）。它返回一个设备对象，代表音频输出设备。`AudioUtilities` 是 `pycaw` 库中的一个模块，`GetSpeakers()` 是它的方法，用来获取计算机的扬声器设备。
+
+- `devices.Activate()`：这行代码用于激活音频设备的 `IAudioEndpointVolume` 接口。`IAudioEndpointVolume` 是一个 COM 接口，允许控制音频输出设备的音量。
+    
+    - `IAudioEndpointVolume._iid_`：这是 `IAudioEndpointVolume` 接口的标识符（接口ID），用于指定要激活的接口类型。
+        
+    - `CLSCTX_ALL`：指定类上下文，`CLSCTX_ALL` 表示使用所有类上下文。
+        
+    - `None`：这里的 `None` 表示没有其他参数。
+
+
+`cast(interface, POINTER(IAudioEndpointVolume))`：这行代码将 `interface` 转换为 `IAudioEndpointVolume` 接口的指针。`cast()` 是一个 `ctypes` 库中的方法，用于将对象转换为其他类型的指针。`POINTER(IAudioEndpointVolume)` 表示将 `interface` 转换为指向 `IAudioEndpointVolume` 接口的指针。通过这个指针，之后可以调用接口方法来获取或设置音量
+
+- `volume.GetVolumeRange()`：这个方法返回音量的最小值、最大值和步长（增量）。具体来说：
+    
+    - `volMin`：音量的最小值。
+        
+    - `volMax`：音量的最大值。
+        
+    - `volStep`：音量的变化步长（每次调整时，音量的增量）。
+        
+- 这行代码将音量范围信息存储在 `volMin`、`volMax` 和 `volStep` 变量中。
+
+是不是看花了眼？没关系，这不重要，有兴趣的读者可以看后面我们是怎么一步步实现这个Module的功能的。
+
+```python
+   vol = np.interp(length, [50, 300], [volMin, volMax])
+   volBar = np.interp(length, [50, 300], [400, 150])
+   volPer = np.interp(length, [50, 300], [0, 100])
+   volume.SetMasterVolumeLevel(vol, None)
+```
+
+在while循环中，我们加入这段代码。
+
+先介绍一下numpy的这个interp函数：
+
+`np.interp()` 是 NumPy 库中的插值函数，用于将一个值映射到指定的范围
+
+意味着我们把起始值为50~300的length映射到volMin和volMax中，后面也一样，一个映射到音量条的高度范围，一个映射到宽度范围
+
+最后通过第四行调整音量的大小。
+
+至此，所有逻辑已经写完，恭喜你！！
+
+## 库源码分析
+
+### Mediapipe
+
+#### 库的基本介绍
+
+我们调包了半天，现在讲讲啥是Mediapipe：
+
+MediaPipe 的源码通常包含以下几个主要部分：
+
+**Graph，Calculator，framework，media_pipe_framework**
+
+- Calculator 是 MediaPipe 中的核心概念，几乎所有的操作都由 Calculator 完成。每个 Calculator 负责某种特定的任务，可能是图像转换、数据分析或者模型推理等
+- Graph 是 MediaPipe 中数据流的表示。在 MediaPipe 中，图的节点通常是 Calculator，数据在图中流动并被处理。Graph 是构建复杂处理管道的基础，它管理节点之间的数据流和任务调度。
+- MediaPipe Framework 是整个架构的底层支持，处理图的执行、同步、线程管理等。它提供了数据流的管道控制和计算调度机制。
+
+是不是太复杂了一点？我们可以这样直观的理解：
+
+比如我们要经营一家水果工厂：
+
+| MediaPipe 概念   | 比喻中的角色         | 作用                        |
+| -------------- | -------------- | ------------------------- |
+| **Graph**      | 整条流水线的蓝图       | 决定了处理流程和顺序：水果怎么处理，加工步骤是什么 |
+| **Calculator** | 具体的处理机器/工人     | 每一步具体处理操作，比如洗水果、榨汁、过滤     |
+| **Packet**     | 传送带上的篮子        | 装着数据（水果、果汁）的容器，在处理站之间流转   |
+| **Stream**     | 输送带通道          | 连接各个处理步骤的数据流通道            |
+| **Framework**  | 整个工厂的管理系统（调度器） | 管理流程、时间、线程、错误处理等          |
+
+#### Hand Tracking模块介绍
+
+##### Graph
+
+```txt
+# Graph definition for hand tracking
+input_stream: "input_video"
+output_stream: "output_landmarks"
+
+node {
+  calculator: "HandDetectionCpu"
+  input_stream: "input_video"
+  output_stream: "detected_hands"
+}
+
+node {
+  calculator: "HandLandmarkCpu"
+  input_stream: "detected_hands"
+  output_stream: "hand_landmarks"
+}
+
+node {
+  calculator: "HandGestureRecognition"
+  input_stream: "hand_landmarks"
+  output_stream: "recognized_gesture"
+}
+```
+
+构造了一个非结构化的数据：设置了这么几个关键的点：
+
+- **HandDetectionCpu**：负责检测视频中的手部，输出手部区域。
+    
+- **HandLandmarkCpu**：对检测到的手部区域进行关键点定位，输出每只手的21个关节点的坐标。
+    
+- **HandGestureRecognition**：基于关键点坐标，进行手势分类。
+
+##### HandDetection模块
+
+```cpp
+class HandDetectionCalculator : public CalculatorBase {
+public:
+    // 处理输入的视频帧
+    absl::Status Process(CalculatorContext* context) override {
+        // 获取输入的视频帧数据
+        const auto& input_frame = context->Inputs().Tag("input_video").Get<NormalizedImageFrame>();
+        
+        // 使用预训练模型进行手部检测
+        std::vector<HandDetection> hands = DetectHands(input_frame);
+        
+        // 输出检测结果
+        context->Outputs().Tag("detected_hands").AddPacket(
+            MakePacket<std::vector<HandDetection>>(hands).At(context->InputTimestamp()));
+        return absl::OkStatus();
+    }
+};
+```
+
+
+我们其实通过注释就可以理解这个模块在干啥。如果总结为三步的话，就是：
+
+- 该模块的 `Process` 方法首先从输入流中读取图像帧（即 `input_video`），然后将图像传递给手部检测模型。
+    
+- 模型返回手部检测结果（`HandDetection`），包括手部的位置和可能的置信度。
+    
+- 最后，结果通过 `context->Outputs()` 发送到下一个节点。、
+
+**我们能从中学到什么？？**
+
+我觉得，对我帮助最大的是，**类型安全和智能指针**。absl::Status 类型用于返回操作结果，它使得错误处理更加明确，避免了使用传统的错误代码或异常机制。**Status 对象可以提供更多的错误信息（如错误消息和状态代码），使得异常情况更加易于追踪。**
+
+##### HandLandmark模块
+
+这个模块用来确定位置。
+
+```cpp
+class HandLandmarkCalculator : public CalculatorBase {
+public:
+    absl::Status Process(CalculatorContext* context) override {
+        // 获取检测到的手部区域
+        const auto& hand_detections = context->Inputs().Tag("detected_hands").Get<std::vector<HandDetection>>();
+        
+        // 对每个手部区域进行关键点定位
+        std::vector<HandLandmarks> landmarks = DetectLandmarks(hand_detections);
+        
+        // 输出关键点结果
+        context->Outputs().Tag("hand_landmarks").AddPacket(
+            MakePacket<std::vector<HandLandmarks>>(landmarks).At(context->InputTimestamp()));
+        return absl::OkStatus();
+    }
+};
+```
+
+
+先看第一个语句，使用引用 (`&`) 而非复制数据，可以避免不必要的数据拷贝，提高性能，特别是在处理大型数据结构（如 `std::vector`）时。（我知道这一点很常见，但是我们总是以为“本来就应该这样呀！！其实不然！！！理解为啥能帮助我们更好的写代码。”）
+
+这三个模块通过不同的计算器进行串联，并使用数据包（Packet）进行数据传递。每个模块都有专门的算法实现，确保手势识别能够实时且准确地执行。
+
+
+### 为啥这些代码能在python中运行？
+
+像 **MediaPipe** 这样的库通常提供了 C++ 库和 Python API 的绑定。**MediaPipe 本身是使用 C++ 开发的，但它通过绑定将 C++ 实现暴露为 Python 模块，使得 Python 开发者可以调用 C++ 实现的高效算法。**
+
+这种方式通常会将 C++ 的核心计算逻辑和处理流程封装在 Python 可调用的函数或类中。例如，MediaPipe 的图计算 (`Graph`) 和计算器 (`Calculator`) 就是通过 Python API 进行访问的。
+
+## 基于C++的实现
+
+### 安装
+
+建议使用VScode，毕竟大部分场景下还是要在Linux基于CMakeLists开发的。不过这个项目太简单啦
+
+**（未完待续捏~）**
